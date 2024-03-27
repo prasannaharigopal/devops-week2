@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    tools {
+        // Use the Java and Maven installations configured globally in Jenkins
+        jdk 'JAVA_HOME'
+        maven 'Maven'
+    }
     
     stages {
         stage('Build') {
