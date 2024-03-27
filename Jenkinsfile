@@ -4,12 +4,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                bat 'mvn clean package'
+                echo " Build success"
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
+                echo " testcases succedded"
             }
         }
     }
