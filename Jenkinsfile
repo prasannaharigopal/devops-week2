@@ -1,10 +1,5 @@
 pipeline {
     agent any
-    environment {
-        // Define environment variables, including paths to Java and Maven
-        JAVA_HOME = 'C:/.Net & Java Software/Open JKD -11'
-        
-    }
     
     stages {
         stage('Build') {
