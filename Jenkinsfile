@@ -1,23 +1,25 @@
 pipeline {
     agent any
-
+ 
     tools {
-        // Use the Java and Maven installations configured globally in Jenkins
-        jdk 'JAVA_HOME'
-        maven 'Maven'
+        jdk "java-jdk"
+        maven "maven"
     }
-    
+ 
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package'
-                echo " Build success"
+                // Checkout source code from Git repository
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '', url: '']])
+                // Build the project
+                bat 'mvn clean package'
             }
         }
+ 
         stage('Test') {
             steps {
-                sh 'mvn test'
-                echo " testcases succedded"
+                // Run tests
+                bat 'mvn test'
             }
         }
     }
