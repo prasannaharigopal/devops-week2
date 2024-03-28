@@ -9,7 +9,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Checkout source code from Git repository
                 // Build the project
                 bat 'mvn clean package'
             }
